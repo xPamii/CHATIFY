@@ -1,0 +1,30 @@
+/* global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme Colors */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 222.2 47.4% 11.2%; /* #1E293B */
+    --primary: 149 100% 41%; /* #00D26A */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 210 40% 96.1%; /* #F1F5F9 */
+    --border: 214.3 31.8% 91.4%; /* #E2E8F0 */
+    --input: 214.3 31.8% 91.4%; /* #E2E8F0 - Background for inputs */
+    --ring: 149 100% 41%; /* #00D26A - For focus rings */
+  }
+
+  .dark {
+    /* Dark Theme Colors */
+    --background: 224 71% 4%; /* #121212 */
+    --foreground: 213 31% 91%; /* #F8FAFC */
+    --primary: 149 100% 41%; /* #00D26A */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222.2 47.4% 11.2%; /* #1E293B */
+    --border: 215 28% 17%; /* #334155 */
+    --input: 222.2 47.4% 11.2%; /* #1E293B - Background for inputs */
+    --ring: 149 100% 41%; /* #00D26A */
+  }
+}

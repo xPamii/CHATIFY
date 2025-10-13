@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "CHATIFY",
+    "slug": "CHATIFY",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/CHATIFY-ICON-NBG.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/CHATIFY-ICON-NBG.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/chatifyicon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/CHATIFY-ICON-NBG.png",
+      "bundler": "metro"
+    }
+  }
+}
