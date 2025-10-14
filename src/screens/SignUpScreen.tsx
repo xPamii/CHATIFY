@@ -20,6 +20,7 @@ import Animated, { FadeInUp, FadeInDown } from 'react-native-reanimated';
 import { useUserRegistration } from '../components/UserContext';
 import { ALERT_TYPE, Toast } from 'react-native-alert-notification';
 import { validateFirstName, validateLastName } from '../util/Validation';
+import { Ionicons } from '@expo/vector-icons';
 
 type SignUpProps = NativeStackNavigationProp<RootStackParamList, 'SignUpScreen'>;
 
@@ -101,7 +102,6 @@ export default function SignUpScreen() {
               Join thousands of users connecting{'\n'}around the world
             </Text>
           </Animated.View>
-
           {/* --- Form Card --- */}
           <Animated.View
             entering={FadeInDown.delay(200).duration(800)}
@@ -118,25 +118,40 @@ export default function SignUpScreen() {
               borderColor: applied === 'light' ? '#F1F5F9' : '#1E293B',
             }}
           >
-            <Text
-              className="text-2xl font-bold mb-6 text-center"
-              style={{ color: themeColors.text }}
-            >
-              Create Account
-            </Text>
+            {/* --- Title --- */}
+            <View style={{ alignItems: 'center', marginBottom: 16 }}>
+              {/* <Ionicons name="person-add" size={36} color={themeColors.primary} /> */}
+              <Text
+                style={{
+                  color: themeColors.text,
+                  fontSize: 22,
+                  fontWeight: '700',
+                  marginTop: 8,
+                }}
+              >
+                Create Account
+              </Text>
+            </View>
 
-            {/* First Name */}
-            <View className="mb-4">
+            {/* --- First Name --- */}
+            <View style={{ marginBottom: 16 }}>
               <FloatingLabelInput
-                label="Enter Your First Name"
+                label="First Name"
+                leftComponent={
+                  <Ionicons
+                    name="person-outline"
+                    size={20}
+                    color={themeColors.primary}
+                    style={{ marginRight: 10 }}
+                  />
+                }
                 value={userData.firstName}
-                onChangeText={(text) => {
+                onChangeText={(text) =>
                   setUserData((previous) => ({
                     ...previous,
                     firstName: text,
-                  }));
-                }}
-
+                  }))
+                }
                 onFocus={() => setIsFirstNameFocused(true)}
                 onBlur={() => setIsFirstNameFocused(false)}
                 containerStyles={{
@@ -146,7 +161,7 @@ export default function SignUpScreen() {
                     : themeColors.border,
                   borderWidth: 2,
                   borderRadius: 16,
-                  paddingHorizontal: 18,
+                  paddingHorizontal: 16,
                   paddingVertical: 4,
                   shadowColor: isFirstNameFocused ? themeColors.primary : 'transparent',
                   shadowOffset: { width: 0, height: 4 },
@@ -156,7 +171,7 @@ export default function SignUpScreen() {
                 }}
                 labelStyles={{
                   color: themeColors.textSecondary,
-                  paddingHorizontal: 6,
+                  // paddingHorizontal: 1,
                   fontWeight: '500',
                 }}
                 customLabelStyles={{
@@ -173,17 +188,25 @@ export default function SignUpScreen() {
               />
             </View>
 
-            {/* Last Name */}
-            <View className="mb-2">
+            {/* --- Last Name --- */}
+            <View style={{ marginBottom: 8 }}>
               <FloatingLabelInput
-                label="Enter Your Last Name"
+                label="Last Name"
+                leftComponent={
+                  <Ionicons
+                    name="person-outline"
+                    size={20}
+                    color={themeColors.primary}
+                    style={{ marginRight: 10 }}
+                  />
+                }
                 value={userData.lastName}
-                onChangeText={(text) => {
+                onChangeText={(text) =>
                   setUserData((previous) => ({
                     ...previous,
                     lastName: text,
-                  }));
-                }}
+                  }))
+                }
                 onFocus={() => setIsLastNameFocused(true)}
                 onBlur={() => setIsLastNameFocused(false)}
                 containerStyles={{
@@ -193,7 +216,7 @@ export default function SignUpScreen() {
                     : themeColors.border,
                   borderWidth: 2,
                   borderRadius: 16,
-                  paddingHorizontal: 18,
+                  paddingHorizontal: 16,
                   paddingVertical: 4,
                   shadowColor: isLastNameFocused ? themeColors.primary : 'transparent',
                   shadowOffset: { width: 0, height: 4 },
@@ -203,7 +226,7 @@ export default function SignUpScreen() {
                 }}
                 labelStyles={{
                   color: themeColors.textSecondary,
-                  paddingHorizontal: 6,
+                  // paddingHorizontal: 6,
                   fontWeight: '500',
                 }}
                 customLabelStyles={{
@@ -220,6 +243,7 @@ export default function SignUpScreen() {
               />
             </View>
           </Animated.View>
+
 
           {/* --- Footer / Buttons --- */}
           <Animated.View entering={FadeInUp.delay(400).duration(600)} className="mt-8">

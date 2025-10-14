@@ -5,6 +5,7 @@ import {
   Modal,
   Platform,
   Pressable,
+  ScrollView,
   StatusBar,
   Text,
   TextInput,
@@ -112,7 +113,7 @@ export default function HomeScreen() {
                 justifyContent: "center",
                 alignItems: "center",
                 borderWidth: 1,
-                marginTop:40,
+                marginTop: 40,
                 borderColor: themeColors.border,
               }}
             >
@@ -222,7 +223,7 @@ export default function HomeScreen() {
                 </View>
               </Pressable>
             </Modal> */}
-            
+
           </View>
         </View>
       ),
@@ -382,166 +383,166 @@ export default function HomeScreen() {
         barStyle={applied === "light" ? "dark-content" : "light-content"}
       />
 
-      {/* Search Bar */}
-      <Animated.View entering={FadeInUp.delay(100)}>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            backgroundColor: themeColors.card,
-            borderWidth: 1,
-            borderColor: themeColors.border,
-            borderRadius: 16,
-            paddingHorizontal: 18,
-            marginHorizontal: 16,
-            marginBottom: 12,
-            height: 52,
-          }}
-        >
-          <Ionicons name="search" size={20} color={themeColors.textSecondary} />
-          <TextInput
-            style={{
-              flex: 1,
-              color: themeColors.text,
-              fontSize: 16,
-              fontWeight: "500",
-              paddingStart: 12,
-            }}
-            placeholder="Search conversations..."
-            placeholderTextColor={themeColors.textSecondary}
-            value={search}
-            onChangeText={setSearch}
-          />
-          {search.length > 0 && (
-            <TouchableOpacity onPress={() => setSearch("")}>
-              <Ionicons name="close-circle" size={20} color={themeColors.textSecondary} />
-            </TouchableOpacity>
-          )}
-        </View>
-      </Animated.View>
-
-      {/* Tabs */}
-      <Animated.View entering={FadeInUp.delay(200)}>
-        <View
-          style={{
-            flexDirection: "row",
-            marginHorizontal: 16,
-            marginVertical: 12,
-            backgroundColor: themeColors.card,
-            borderRadius: 16,
-            padding: 4,
-            borderWidth: 1,
-            borderColor: themeColors.border,
-          }}
-        >
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              paddingVertical: 12,
-              alignItems: "center",
-              borderRadius: 12,
-              backgroundColor: activeTab === "all" ? themeColors.primary : "transparent",
-            }}
-            onPress={() => setActiveTab("all")}
-          >
-            <Text
-              style={{
-                color: activeTab === "all" ? "#fff" : themeColors.textSecondary,
-                fontWeight: "700",
-                fontSize: 15,
-              }}
-            >
-              All Chats
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              paddingVertical: 12,
-              alignItems: "center",
-              borderRadius: 12,
-              backgroundColor: activeTab === "unread" ? themeColors.primary : "transparent",
-            }}
-            onPress={() => setActiveTab("unread")}
-          >
-            <Text
-              style={{
-                color: activeTab === "unread" ? "#fff" : themeColors.textSecondary,
-                fontWeight: "700",
-                fontSize: 15,
-              }}
-            >
-              Unread
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </Animated.View>
-
-      {/* Chat List */}
-      <FlatList
-        data={filtered}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.friendId.toString()}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 100 }}
-        ListEmptyComponent={
+        {/* Search Bar */}
+        <Animated.View entering={FadeInUp.delay(100)}>
           <View
             style={{
-              flex: 1,
-              justifyContent: "center",
+              flexDirection: "row",
               alignItems: "center",
-              paddingTop: 80,
+              backgroundColor: themeColors.card,
+              borderWidth: 1,
+              borderColor: themeColors.border,
+              borderRadius: 16,
+              paddingHorizontal: 18,
+              marginHorizontal: 16,
+              marginBottom: 12,
+              height: 52,
             }}
           >
+            <Ionicons name="search" size={20} color={themeColors.textSecondary} />
+            <TextInput
+              style={{
+                flex: 1,
+                color: themeColors.text,
+                fontSize: 16,
+                fontWeight: "500",
+                paddingStart: 12,
+              }}
+              placeholder="Search conversations..."
+              placeholderTextColor={themeColors.textSecondary}
+              value={search}
+              onChangeText={setSearch}
+            />
+            {search.length > 0 && (
+              <TouchableOpacity onPress={() => setSearch("")}>
+                <Ionicons name="close-circle" size={20} color={themeColors.textSecondary} />
+              </TouchableOpacity>
+            )}
+          </View>
+        </Animated.View>
+
+        {/* Tabs */}
+        <Animated.View entering={FadeInUp.delay(200)}>
+          <View
+            style={{
+              flexDirection: "row",
+              marginHorizontal: 16,
+              marginVertical: 12,
+              backgroundColor: themeColors.card,
+              borderRadius: 16,
+              padding: 4,
+              borderWidth: 1,
+              borderColor: themeColors.border,
+            }}
+          >
+            <TouchableOpacity
+              style={{
+                flex: 1,
+                paddingVertical: 12,
+                alignItems: "center",
+                borderRadius: 12,
+                backgroundColor: activeTab === "all" ? themeColors.primary : "transparent",
+              }}
+              onPress={() => setActiveTab("all")}
+            >
+              <Text
+                style={{
+                  color: activeTab === "all" ? "#fff" : themeColors.textSecondary,
+                  fontWeight: "700",
+                  fontSize: 15,
+                }}
+              >
+                All Chats
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={{
+                flex: 1,
+                paddingVertical: 12,
+                alignItems: "center",
+                borderRadius: 12,
+                backgroundColor: activeTab === "unread" ? themeColors.primary : "transparent",
+              }}
+              onPress={() => setActiveTab("unread")}
+            >
+              <Text
+                style={{
+                  color: activeTab === "unread" ? "#fff" : themeColors.textSecondary,
+                  fontWeight: "700",
+                  fontSize: 15,
+                }}
+              >
+                Unread
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </Animated.View>
+
+        {/* Chat List */}
+        <FlatList
+          data={filtered}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.friendId.toString()}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 100 }}
+          ListEmptyComponent={
             <View
               style={{
-                width: 120,
-                height: 120,
-                borderRadius: 60,
-                backgroundColor: themeColors.accent,
+                flex: 1,
                 justifyContent: "center",
                 alignItems: "center",
-                marginBottom: 24,
+                paddingTop: 80,
               }}
             >
-              <Ionicons
-                name={activeTab === "unread" ? "mail-open-outline" : "chatbubbles-outline"}
-                size={56}
-                color={themeColors.primary}
-              />
+              <View
+                style={{
+                  width: 120,
+                  height: 120,
+                  borderRadius: 60,
+                  backgroundColor: themeColors.accent,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginBottom: 24,
+                }}
+              >
+                <Ionicons
+                  name={activeTab === "unread" ? "mail-open-outline" : "chatbubbles-outline"}
+                  size={56}
+                  color={themeColors.primary}
+                />
+              </View>
+
+              <Text
+                style={{
+                  color: themeColors.text,
+                  fontSize: 20,
+                  fontWeight: "700",
+                  textAlign: "center",
+                  marginBottom: 8,
+                }}
+              >
+                {activeTab === "unread" ? "All caught up!" : "No messages yet"}
+              </Text>
+              <Text
+                style={{
+                  color: themeColors.textSecondary,
+                  fontSize: 15,
+                  textAlign: "center",
+                  paddingHorizontal: 40,
+                  lineHeight: 22,
+                }}
+              >
+                {activeTab === "unread"
+                  ? "You have no unread messages at the moment"
+                  : "Start a conversation with someone new"}
+              </Text>
             </View>
+          }
+        />
 
-            <Text
-              style={{
-                color: themeColors.text,
-                fontSize: 20,
-                fontWeight: "700",
-                textAlign: "center",
-                marginBottom: 8,
-              }}
-            >
-              {activeTab === "unread" ? "All caught up!" : "No messages yet"}
-            </Text>
-            <Text
-              style={{
-                color: themeColors.textSecondary,
-                fontSize: 15,
-                textAlign: "center",
-                paddingHorizontal: 40,
-                lineHeight: 22,
-              }}
-            >
-              {activeTab === "unread"
-                ? "You have no unread messages at the moment"
-                : "Start a conversation with someone new"}
-            </Text>
-          </View>
-        }
-      />
-
-      {/* Floating Action Button */}
-      <TouchableOpacity
+        {/* Floating Action Button */}
+        {/* <TouchableOpacity
         onPress={() => navigation.navigate("NewChatScreen")}
         style={{
           position: "absolute",
@@ -561,7 +562,11 @@ export default function HomeScreen() {
         }}
       >
         <Ionicons name="add" size={32} color="#fff" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+
+        {/* Extra padding at bottom */}
+        {/* <View style={{ height: 10 }} /> */}
+
 
     </SafeAreaView>
   );

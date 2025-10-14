@@ -121,6 +121,7 @@ function ChatApp() {
                   <Stack.Screen
                     name="ProfileScreen"
                     component={ProfileScreen}
+                    options={{ headerShown: false }}
                   />
                   <Stack.Screen
                     name="SettingScreen"

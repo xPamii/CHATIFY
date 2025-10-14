@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { View, Platform, Pressable, Animated } from "react-native";
-import React, { useRef, useEffect } from "react";
+import { View, Platform } from "react-native";
+import React from "react";
 import { useTheme } from "../theme/ThemeProvider";
 import ChatsScreen from "./ChatsScreen";
 import StatusScreen from "./StatusScreen";
@@ -14,69 +14,56 @@ export default function HomeTabs() {
   const { applied } = useTheme();
 
   const themeColors = {
-    primary: "#00D26A",
-    background: applied === "light" ? "#F8FAFC" : "#0A0F1C",
-    card: applied === "light" ? "#FFFFFF" : "#1E293B",
-    inactiveIcon: applied === "light" ? "#94A3B8" : "#64748B",
+    primary: '#00D26A',
+    card: applied === 'light' ? '#FFFFFF' : '#1E293B',
+    background: applied === 'light' ? '#F8FAFC' : '#0A0F1C',
+    border: applied === 'light' ? '#E2E8F0' : '#334155',
+    activeText: '#00D26A',
+    inactiveText: applied === 'light' ? '#94A3B8' : '#64748B',
   };
 
   return (
     <Tabs.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color }) => {
+        tabBarIcon: ({ focused }) => {
           let iconName = "chatbubble-ellipses";
+          
           if (route.name === "Chats") iconName = "chatbubble-ellipses";
           else if (route.name === "Status") iconName = "time";
           else if (route.name === "Calls") iconName = "call";
           else if (route.name === "Profile") iconName = "person";
 
-          const scaleAnim = useRef(new Animated.Value(1)).current;
-          useEffect(() => {
-            Animated.spring(scaleAnim, {
-              toValue: focused ? 1.15 : 1,
-              useNativeDriver: true,
-              friction: 6,
-            }).start();
-          }, [focused]);
-
           return (
-            <Animated.View
-              style={{
-                transform: [{ scale: scaleAnim }],
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: focused ? themeColors.primary : "transparent",
-                borderRadius: 20,
-                padding: 10,
-                elevation: focused ? 5 : 0,
-              }}
-            >
-              <Ionicons
-                name={iconName as any}
-                size={24}
-                color={focused ? "#fff" : color}
-              />
-            </Animated.View>
+            <Ionicons
+              name={iconName as any}
+              size={24}
+              color={focused ? themeColors.activeText : themeColors.inactiveText}
+            />
           );
         },
         tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: "600",
-          marginBottom: Platform.OS === "ios" ? 8 : 4,
+          fontSize: 11,
+          fontWeight: '600',
+          marginTop: 4,
         },
-        tabBarActiveTintColor: themeColors.primary,
-        tabBarInactiveTintColor: themeColors.inactiveIcon,
+        tabBarActiveTintColor: themeColors.activeText,
+        tabBarInactiveTintColor: themeColors.inactiveText,
         tabBarStyle: {
-          position: "absolute",
-          marginHorizontal: 16,
-          marginBottom: 16,
-          height: 68,
-          borderRadius: 20,
+          position: 'absolute',
+          bottom: 12,
+          left: 12,
+          right: 12,
+          height: 64,
           backgroundColor: themeColors.card,
-          elevation: 10,
-          shadowColor: "#000",
-          shadowOpacity: 0.25,
-          shadowRadius: 10,
+          borderRadius: 16,
+          borderWidth: 1,
+          borderColor: themeColors.border,
+          elevation: 8,
+          shadowColor: '#000',
+          shadowOpacity: 0.1,
+          shadowRadius: 12,
+          shadowOffset: { width: 0, height: 4 },
+          paddingBottom: Platform.OS === 'ios' ? 12 : 8,
           borderTopWidth: 0,
         },
         headerShown: false,
