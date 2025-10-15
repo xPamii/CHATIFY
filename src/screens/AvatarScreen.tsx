@@ -72,6 +72,7 @@ export default function AvatarScreen() {
     require("../../assets/avatar/avatar_4.png"),
     require("../../assets/avatar/avatar_5.png"),
     require("../../assets/avatar/avatar_6.png"),
+    require("../../assets/avatar/avatar_7.png"),
   ];
 
   return (

@@ -300,7 +300,7 @@ export default function SignUpScreen() {
             </View>
 
             <Pressable
-              onPress={() => navigation.navigate('SignUpScreen')}
+              onPress={() => navigation.navigate('SignInScreen')}
               className="mt-8"
               style={({ pressed }) => ({
                 opacity: pressed ? 0.7 : 1,
@@ -310,7 +310,7 @@ export default function SignUpScreen() {
                 className="text-center text-base"
                 style={{ color: themeColors.textSecondary }}
               >
-                Already have an account?{' '}
+                Already have an account?{}
                 <Text
                   style={{
                     color: themeColors.primary,
